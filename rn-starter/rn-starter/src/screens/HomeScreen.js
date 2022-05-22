@@ -15,7 +15,6 @@ function HomeScreen({ navigation }) {
       <TouchableOpacity onPress={() => navigation.navigate('ImageScreen')}>
         <Text style={styles.text}>Image Screen  TouchableButton</Text>
       </TouchableOpacity>
-
     </View>
   );
 }

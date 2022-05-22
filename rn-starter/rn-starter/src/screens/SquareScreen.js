@@ -1,30 +1,39 @@
-import { View, Text } from 'react-native';
-import React, { useState } from 'react';
+/* eslint-disable no-unused-expressions */
+import { View } from 'react-native';
+import React, { useReducer } from 'react';
 import ColorCounter from '../components/ColorCounter';
 
+const COLOR_INCREMENT = 15;
+
+const reducer = (state, action) => {
+  const { colorToChange, amount } = action;
+
+  if (colorToChange + amount < 0 || colorToChange + amount > 255) return state;
+
+  return { ...state, [colorToChange]: state[colorToChange] + amount };
+};
+
 function SquareScreen() {
-  const [red, setRed] = useState(255);
-  const [blue, setBlue] = useState(255);
-  const [green, setGreen] = useState(255);
+  const [state, dispatch] = useReducer(reducer, { red: 0, green: 0, blue: 0 });
+  const { red, green, blue } = state;
 
   return (
     <View>
       <ColorCounter
         color="red"
-        onIncrease={() => setRed(red + 20)}
-        onDecrease={() => setRed(red - 20)}
+        onIncrease={() => dispatch({ colorToChange: 'red', amount: COLOR_INCREMENT })}
+        onDecrease={() => dispatch({ colorToChange: 'red', amount: -1 * COLOR_INCREMENT })}
       />
       <ColorCounter
         color="green"
-        onIncrease={() => setGreen(green + 20)}
-        onDecrease={() => setGreen(green - 20)}
+        onIncrease={() => dispatch({ colorToChange: 'green', amount: COLOR_INCREMENT })}
+        onDecrease={() => dispatch({ colorToChange: 'green', amount: -1 * COLOR_INCREMENT })}
       />
       <ColorCounter
         color="blue"
-        onIncrease={() => setBlue(blue + 20)}
-        onDecrease={() => setBlue(blue - 20)}
+        onIncrease={() => dispatch({ colorToChange: 'blue', amount: COLOR_INCREMENT })}
+        onDecrease={() => dispatch({ colorToChange: 'blue', amount: -1 * COLOR_INCREMENT })}
       />
-
       <View style={{ height: 150, width: 150, backgroundColor: `rgb(${red},${green},${blue})` }} />
     </View>
   );
