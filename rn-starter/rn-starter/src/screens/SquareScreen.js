@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable no-unused-expressions */
 import { View } from 'react-native';
 import React, { useReducer } from 'react';
@@ -6,35 +7,37 @@ import ColorCounter from '../components/ColorCounter';
 const COLOR_INCREMENT = 15;
 
 const reducer = (state, action) => {
-  const { colorToChange, amount } = action;
+  const { type, payload } = action;
 
-  if (colorToChange + amount < 0 || colorToChange + amount > 255) return state;
+  if (type + payload < 0 || type + payload > 255) return state;
 
-  return { ...state, [colorToChange]: state[colorToChange] + amount };
+  return { ...state, [type]: state[type] + payload };
 };
 
 function SquareScreen() {
-  const [state, dispatch] = useReducer(reducer, { red: 0, green: 0, blue: 0 });
-  const { red, green, blue } = state;
+  const [state, dispatch] = useReducer(reducer, { change_red: 0, change_green: 0, change_blue: 0 });
+  // eslint-disable-next-line camelcase
+  const { change_red, change_green, change_blue } = state;
 
   return (
     <View>
       <ColorCounter
         color="red"
-        onIncrease={() => dispatch({ colorToChange: 'red', amount: COLOR_INCREMENT })}
-        onDecrease={() => dispatch({ colorToChange: 'red', amount: -1 * COLOR_INCREMENT })}
+        onIncrease={() => dispatch({ type: 'change_red', payload: COLOR_INCREMENT })}
+        onDecrease={() => dispatch({ type: 'change_red', payload: -1 * COLOR_INCREMENT })}
       />
       <ColorCounter
         color="green"
-        onIncrease={() => dispatch({ colorToChange: 'green', amount: COLOR_INCREMENT })}
-        onDecrease={() => dispatch({ colorToChange: 'green', amount: -1 * COLOR_INCREMENT })}
+        onIncrease={() => dispatch({ type: 'change_green', payload: COLOR_INCREMENT })}
+        onDecrease={() => dispatch({ type: 'change_green', payload: -1 * COLOR_INCREMENT })}
       />
       <ColorCounter
         color="blue"
-        onIncrease={() => dispatch({ colorToChange: 'blue', amount: COLOR_INCREMENT })}
-        onDecrease={() => dispatch({ colorToChange: 'blue', amount: -1 * COLOR_INCREMENT })}
+        onIncrease={() => dispatch({ type: 'change_blue', payload: COLOR_INCREMENT })}
+        onDecrease={() => dispatch({ type: 'change_blue', payload: -1 * COLOR_INCREMENT })}
       />
-      <View style={{ height: 150, width: 150, backgroundColor: `rgb(${red},${green},${blue})` }} />
+
+      <View style={{ height: 150, width: 150, backgroundColor: `rgb(${change_red},${change_green},${change_blue})` }} />
     </View>
   );
 }

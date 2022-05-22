@@ -12,6 +12,7 @@ function HomeScreen({ navigation }) {
       <Button title="BOTAO NAVIGATE TO CounterScreen" onPress={() => navigation.navigate('CounterScreen')} />
       <Button title="BOTAO NAVIGATE TO ColorScreen" onPress={() => navigation.navigate('ColorScreen')} />
       <Button title="BOTAO NAVIGATE TO SquareScreen" onPress={() => navigation.navigate('SquareScreen')} />
+      <Button title="BOTAO NAVIGATE TO TextScreen" onPress={() => navigation.navigate('TextScreen')} />
       <TouchableOpacity onPress={() => navigation.navigate('ImageScreen')}>
         <Text style={styles.text}>Image Screen  TouchableButton</Text>
       </TouchableOpacity>
