@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
-import uuid from 'react-native-uuid';
+// import uuid from 'react-native-uuid';
 
 export default function ListScreen() {
   const friends = [
@@ -21,7 +21,7 @@ export default function ListScreen() {
       <FlatList
         data={friends}
         style={{ width: '100%' }}
-        keyExtractor={(friend, index) => `friend.name${index}`}
+        keyExtractor={(friend, index) => `${friend.name}${index}`}
         renderItem={({ item }) => (
           <Text style={styles.text}>
             {item.name}

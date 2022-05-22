@@ -1,10 +1,16 @@
 import React from 'react';
-import { Text, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import ImageDetail from '../components/ImageDetail';
+import beach from '../../assets/beach.jpg';
+import forest from '../../assets/forest.jpg';
+import mountain from '../../assets/mountain.jpg';
 
 export default function ComponentsScreen() {
   return (
-    <View>
-      <Text style={styles.component}>MARCELO ARRAES2</Text>
+    <View style={styles.component}>
+      <ImageDetail title="beach" imgSource={beach} score={9} />
+      <ImageDetail title="forest" imgSource={forest} score={10} />
+      <ImageDetail title="mountain" imgSource={mountain} score={5} />
     </View>
   );
 }
