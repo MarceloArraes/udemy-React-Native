@@ -1,13 +1,22 @@
 import React from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, View } from 'react-native';
+import ComponentsScreen from './ComponentsScreen';
+import ListScreen from './ListScreen';
 
-const HomeScreen = () => {
-  return <Text style={styles.text}>HomeScreen</Text>;
-};
+function HomeScreen() {
+  return (
+    <View>
+      <Text style={styles.text}>Marcelo Arraes</Text>
+      <ComponentsScreen />
+      <ListScreen />
+    </View>
+  );
+}
 
 const styles = StyleSheet.create({
   text: {
     fontSize: 30,
+    color: 'purple',
   },
 });
 
