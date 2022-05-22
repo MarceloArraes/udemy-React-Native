@@ -10,6 +10,10 @@ export default function ColorScreen() {
       <Button title="Add a Color" onPress={() => setColors([...colors, randomRgb()])} />
       <FlatList
         data={colors}
+contentContainerStyle={{
+        flexDirection: 'row',
+        flexWrap: 'wrap-reverse'
+    }}
         keyExtractor={(item) => item}
         renderItem={({ item }) => (
           <View style={{
@@ -18,7 +22,6 @@ export default function ColorScreen() {
           />
         )}
       />
-      <View style={{ height: 100, width: 100, backgroundColor: colors.lastIndexOf }} />
     </View>
   );
 }
