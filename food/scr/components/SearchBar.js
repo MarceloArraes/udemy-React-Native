@@ -18,7 +18,7 @@ const SearchBar = ({term, onTermChange, onTermSubmit}) => {
       onChangeText={onTermChange}
       onEndEditing={onTermSubmit}
       />
-      
+      <Text>{term}</Text>
     </View>
   )
 }
@@ -27,6 +27,8 @@ export default SearchBar
 
 const styles = StyleSheet.create({
   backgroundStyle: {
+    marginBottom: 10,
+    marginTop: 25,
     flexDirection: 'row',
     backgroundColor: '#F123',
     height: 50,
@@ -34,6 +36,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 15,
     width: '90%',
     justifyContent: 'center',
+    alignItems: 'center',
 },
   inputStyle:{
     fontSize: 18,
