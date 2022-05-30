@@ -3,8 +3,14 @@ import React, { useReducer } from 'react';
 
 const reducer = (state, action) => {
   const { type, payload } = action;
-
-  return { ...state, counter: state.counter + payload };
+  switch (type) {
+    case 'increment':
+      return { ...state, count: state.count + payload };
+    case 'decrement':
+      return { ...state, count: state.count - payload };
+    default:
+      return state;
+  }
 };
 
 export default function CounterScreen() {
@@ -16,11 +22,11 @@ export default function CounterScreen() {
 
       <Button
         title="Increase"
-        onPress={() => dispatch({ type: 'increment', payload: 1 })}
+        onPress={() => dispatch({ type: 'increment', payload: 2 })}
       />
       <Button
         title="Decrease"
-        onPress={() => dispatch({ type: 'decrement', payload: -1 })}
+        onPress={() => dispatch({ type: 'decrement', payload: 2 })}
       />
       <Text style={{
         fontSize: 35, marginTop: 20, borderWidth: 2, borderColor: 'green',
