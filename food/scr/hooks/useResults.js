@@ -26,9 +26,6 @@ const searchApi = async (term) => {
   useEffect(() => {
     searchApi('grocery');
   
-    return () => {
-      console.log('cleanup');
-    }
   }, []);
 
 return [searchApi, results, errorMessage];
