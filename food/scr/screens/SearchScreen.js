@@ -17,8 +17,8 @@ const [searchApi, results, errorMessage] = useResults();
 
     return (
     <>
-      <SearchBar term={term} onTermChange={setTerm} 
-      onTermSubmit={({term})=> searchApi(term)} />
+      <SearchBar term={term} onTermChange={setTerm}
+      onTermSubmit={()=> searchApi(term)} />
 
       <View style={{ marginHorizontal:15 }}>
       <Text>SearchScreen {term}</Text>
@@ -29,9 +29,9 @@ const [searchApi, results, errorMessage] = useResults();
       <ScrollView>
       <ResultsList results={filterResultsByPrice('$')} title={'Cost Effective'}/>
 
-      <ResultsList results={filterResultsByPrice('$$')} title={'Cost Effective2'}/>
+      <ResultsList results={filterResultsByPrice('$$')} title={'Cost Effective 2'}/>
 
-      <ResultsList results={filterResultsByPrice('$$$')} title={'Cost Effective3'}/>
+      <ResultsList results={filterResultsByPrice('$$$')} title={'Cost Effective 3'}/>
       </ScrollView>
     </>
   )
